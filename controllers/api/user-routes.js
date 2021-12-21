@@ -1,7 +1,7 @@
 const router = require('express').Router();
 
 const { User, Post, Comment } = require('../../models');
-// const withAuth = require('../../utils/auth');
+const withAuth = require('../../utils/auth');
 
 // GET /api/users
 router.get('/',  (req, res) => {
@@ -88,7 +88,7 @@ router.post('/login', (req, res) => {
 });
 
 // // // LOG OUT 
-router.post('/logout', withAuth,(req, res) => {
+router.post('/logout', withAuth ,(req, res) => {
     if (req.session.loggedIn) {
         req.session.destroy(() => {
             res.status(204).end();
