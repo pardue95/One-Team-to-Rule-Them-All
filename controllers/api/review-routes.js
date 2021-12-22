@@ -1,6 +1,6 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Review, User, Book, Vote } = require('../../models');
+const { Review, User, Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 // get all users
@@ -39,7 +39,7 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Review.findOne({
     where: {
-      id: req.params.id
+      reviewId: req.params.id
     },
     attributes: [
         'reviewId',
@@ -80,7 +80,6 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Review.create({
-    title: req.body.title,
     bookId: req.body.bookId,
     userId: req.session.userId
   })
@@ -91,24 +90,12 @@ router.post('/', withAuth, (req, res) => {
     });
 });
 
-router.put('/upvote', withAuth, (req, res) => {
-  // custom static method created in models/Post.js
-  Post.upvote({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
-    .then(updatedBookData => res.json(updatedBookData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
 router.put('/:id', withAuth, (req, res) => {
   Review.update(
-    {
-      title: req.body.title
-    },
+      req.body,
     {
       where: {
-        reviewId: req.params.reviewId
+        reviewId: req.params.id
       }
     }
   )
@@ -126,10 +113,10 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.reviewId);
+  console.log('id', req.params.id);
   Review.destroy({
     where: {
-      reviewId: req.params.reviewId
+      reviewId: req.params.id
     }
   })
     .then(dbPostData => {
