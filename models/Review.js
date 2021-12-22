@@ -39,13 +39,13 @@ class Review extends Model {}
 // create fields/columns for Review model
 Review.init(
     {
-      id: {
+      reviewId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
       },
-      book_id: {
+      bookId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -53,7 +53,7 @@ Review.init(
             key: 'id',
         }
       },
-      user_id: {
+      userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
         references: {
@@ -61,14 +61,14 @@ Review.init(
             key: 'id',
         }
       },
-      comment_text: {
+      comment: {
         type: DataTypes.STRING
       },
-      created_at: {
+      created: {
         type: DataTypes.DATE,
         allowNull: false
       },
-      updated_at: {
+      updated: {
         type: DataTypes.DATE,
         allowNull: false
           }
