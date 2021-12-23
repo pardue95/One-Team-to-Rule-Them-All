@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "\"jest\"",
+    "test": "\"jest\"",git 
     "seeds": "node seeds/index.js"
   },
   "repository": {
@@ -27,5 +27,8 @@
   "bugs": {
     "url": "https://github.com/pardue95/One-team-to-rule-them-all"
   },
-  "homepage": "https://github.com/pardue95/One-team-to-rule-them-all"
+  "homepage": "https://github.com/pardue95/One-team-to-rule-them-all",
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
 }
