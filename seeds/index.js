@@ -1,12 +1,12 @@
 const sequelize = require('../config/connection');
-const seedBook = require('./bookData');
+// const seedBook = require('./bookData');
 const seedReview = require('./reviewData');
 const seedUser = require('./userData');
 
 const seedAll = async () => {
   await sequelize.sync({ force: true });
 
-  await seedBook();
+  // await seedBook();
 
   await seedUser();
 

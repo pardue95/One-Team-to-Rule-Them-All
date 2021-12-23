@@ -6,7 +6,7 @@ const withAuth = require('../../utils/auth');
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
-  Post.findAll({
+  Review.findAll({
     attributes: [
       'reviewId',
       'bookId',
@@ -80,7 +80,7 @@ router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Review.create({
     bookId: req.body.bookId,
-    userId: req.session.userId
+    // userId: req.session.userId
   })
     .then(dbPostData => res.json(dbPostData))
     .catch(err => {
