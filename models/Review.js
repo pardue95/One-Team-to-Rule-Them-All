@@ -15,10 +15,10 @@ Review.init(
       bookId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        references: {
-            model: 'book',
-            key: 'id',
-        }
+        // references: {
+        //     model: 'book',
+        //     key: 'id',
+        // }
       },
       userId: {
         type: DataTypes.INTEGER,
@@ -44,7 +44,7 @@ Review.init(
       sequelize,
       freezeTableName: true,
       underscored: true,
-      modelName: 'post'
+      modelName: 'review'
     }
   );
   
