@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "\"jest\"",
-    "seed": "node seeds/bookData.js",
-    "start": "node server.js",
-    "watch": "nodemon server.js"
+    "seeds": "node seeds/index.js"
   },
   "repository": {
     "type": "git",

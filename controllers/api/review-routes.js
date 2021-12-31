@@ -11,25 +11,26 @@ router.get('/', (req, res) => {
       'reviewId',
       'bookId',
       'userId',
+      'comment',
       'created',
       'updated',
     ],
     include: [
-      {
-        model: Book,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
+      // {
+      //   model: Book,
+      //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // },
       {
         model: User,
         attributes: ['username']
       }
     ]
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -45,30 +46,31 @@ router.get('/:id', (req, res) => {
         'reviewId',
         'bookId',
         'userId',
+        'comment',
         'created',
         'updated'
     ],
     include: [
-      {
-        model: Book,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
+      // {
+      //   model: Book,
+      //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // },
       {
         model: User,
         attributes: ['username']
       }
     ]
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(dbReviewData => {
+      if (!dbReviewData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbReviewData);
     })
     .catch(err => {
       console.log(err);
@@ -79,10 +81,12 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Review.create({
+
     bookId: req.body.bookId,
     // userId: req.session.userId
+=======
   })
-    .then(dbPostData => res.json(dbPostData))
+    .then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -98,12 +102,12 @@ router.put('/:id', withAuth, (req, res) => {
       }
     }
   )
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(dbReviewData => {
+      if (!dbReviewData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbReviewData);
     })
     .catch(err => {
       console.log(err);
@@ -118,12 +122,12 @@ router.delete('/:id', withAuth, (req, res) => {
       reviewId: req.params.id
     }
   })
-    .then(dbPostData => {
-      if (!dbPostData) {
+    .then(dbReviewData => {
+      if (!dbReviewData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(dbPostData);
+      res.json(dbReviewData);
     })
     .catch(err => {
       console.log(err);
