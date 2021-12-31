@@ -84,7 +84,7 @@ router.post('/', withAuth, (req, res) => {
 
     bookId: req.body.bookId,
     // userId: req.session.userId
-=======
+
   })
     .then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
