@@ -18,7 +18,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Book,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['bookId', 'title', 'author', 'genre'],
         include: {
           model: User,
           attributes: ['username']
@@ -53,7 +53,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Book,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        attributes: ['bookId', 'title', 'author', 'genre'],
         include: {
           model: User,
           attributes: ['username']
