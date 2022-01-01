@@ -82,8 +82,8 @@ router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Review.create({
 
-    bookId: req.body.bookId,
-    // userId: req.session.userId
+    // bookId: req.body.bookId,
+    userId: req.session.userId
 
   })
     .then(dbReviewData => res.json(dbReviewData))

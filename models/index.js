@@ -20,7 +20,7 @@ Review.belongsTo( Book, {
   foreignKey: 'reviewId',
 });
 
-Book.belongsToMany( User, {
+Book.belongsTo( User, {
   foreignKey: 'bookId',
 });
 

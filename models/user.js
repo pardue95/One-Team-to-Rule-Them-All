@@ -28,14 +28,14 @@ User.init(
     //     key: 'id'
     //   }
     // },
-    // bookId: {
-    //   type: DataTypes.INTEGER,
-    //   allowNull: false,
+    bookId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     //   references: {
     //       model: 'book',
     //       key: 'id',
     //   }
-    // },
+    },
     username: {
       type: DataTypes.STRING,
       allowNull: false
