@@ -16,14 +16,14 @@ router.get('/', (req, res) => {
       'updated',
     ],
     include: [
-      {
-        model: Book,
-        attributes: ['bookId', 'title', 'author', 'genre'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
+      // {
+      //   model: Book,
+      //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }Error: Unknown column 'book.id' in 'field list'
+      // },
       {
         model: User,
         attributes: ['username']
@@ -51,14 +51,14 @@ router.get('/:id', (req, res) => {
         'updated'
     ],
     include: [
-      {
-        model: Book,
-        attributes: ['bookId', 'title', 'author', 'genre'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
+      // {
+      //   model: Book,
+      //   attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+      //   include: {
+      //     model: User,
+      //     attributes: ['username']
+      //   }
+      // },
       {
         model: User,
         attributes: ['username']
