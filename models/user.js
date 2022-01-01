@@ -20,6 +20,22 @@ User.init(
       primaryKey: true,
       autoIncrement: true
     },
+    // reviewId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //     model: 'review',
+    //     key: 'id'
+    //   }
+    // },
+    // bookId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   references: {
+    //       model: 'book',
+    //       key: 'id',
+    //   }
+    // },
     username: {
       type: DataTypes.STRING,
       allowNull: false

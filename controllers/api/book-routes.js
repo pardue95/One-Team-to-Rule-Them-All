@@ -6,31 +6,29 @@ const withAuth = require('../../utils/auth');
 // get all users
 router.get('/', (req, res) => {
   console.log('======================');
-  Review.findAll({
+  Book.findAll({
     attributes: [
-      'reviewId',
       'bookId',
-      'userId',
-      'comment',
-      'created',
-      'updated',
+      'title',
+      'author',
+      'genre',
     ],
     include: [
       {
-        model: Book,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+        model: Review,
+        attributes: ['reviewId', 'bookId', 'user_id', 'comment', 'created', 'updated'],
         include: {
           model: User,
           attributes: ['username']
         }
       },
-      {
-        model: User,
-        attributes: ['username']
-      }
+    //   {
+    //     model: User,
+    //     attributes: ['username']
+    //   }
     ]
   })
-    .then(dbReviewData => res.json(dbReviewData))
+    .then(dbBookData => res.json(dbBookData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -38,39 +36,37 @@ router.get('/', (req, res) => {
 });
 
 router.get('/:id', (req, res) => {
-  Review.findOne({
+  Book.findOne({
     where: {
-      reviewId: req.params.id
+      bookId: req.params.id
     },
     attributes: [
-        'reviewId',
         'bookId',
-        'userId',
-        'comment',
-        'created',
-        'updated'
+        'title',
+        'author',
+        'genre',
     ],
     include: [
-      {
-        model: Book,
-        attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
-        include: {
-          model: User,
-          attributes: ['username']
-        }
-      },
-      {
-        model: User,
-        attributes: ['username']
-      }
+        {
+            model: Review,
+            attributes: ['reviewId', 'bookId', 'user_id', 'comment', 'created', 'updated'],
+            include: {
+                model: User,
+                attributes: ['username']
+            }
+          },
+    //   {
+    //     model: User,
+    //     attributes: ['username']
+    //   }
     ]
   })
-    .then(dbReviewData => {
-      if (!dbReviewData) {
+    .then(dbBookData => {
+      if (!dbBookData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(dbReviewData);
+      res.json(dbBookData);
     })
     .catch(err => {
       console.log(err);
@@ -80,13 +76,11 @@ router.get('/:id', (req, res) => {
 
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-  Review.create({
-
+  Book.create({
     bookId: req.body.bookId,
-    // userId: req.session.userId
-
+    userId: req.session.userId
   })
-    .then(dbReviewData => res.json(dbReviewData))
+    .then(dbBookData => res.json(dbBookData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -94,20 +88,20 @@ router.post('/', withAuth, (req, res) => {
 });
 
 router.put('/:id', withAuth, (req, res) => {
-  Review.update(
+  Book.update(
       req.body,
     {
       where: {
-        reviewId: req.params.id
+        bookId: req.params.id
       }
     }
   )
-    .then(dbReviewData => {
-      if (!dbReviewData) {
+    .then(dbBookData => {
+      if (!dbBookData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(dbReviewData);
+      res.json(dbBookData);
     })
     .catch(err => {
       console.log(err);
@@ -117,17 +111,17 @@ router.put('/:id', withAuth, (req, res) => {
 
 router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
-  Review.destroy({
+  Book.destroy({
     where: {
-      reviewId: req.params.id
+      bookId: req.params.id
     }
   })
-    .then(dbReviewData => {
-      if (!dbReviewData) {
+    .then(dbBookData => {
+      if (!dbBookData) {
         res.status(404).json({ message: 'No post found with this id' });
         return;
       }
-      res.json(dbReviewData);
+      res.json(dbBookData);
     })
     .catch(err => {
       console.log(err);
