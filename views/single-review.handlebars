@@ -1,4 +1,4 @@
-{{> post-info post}}
+{{> review-info review}}
 
 {{#if loggedIn}}
 <form class="comment-form">
@@ -12,8 +12,8 @@
 </form>
 {{/if}}
 
-{{> comments post.comments}}
+{{!-- {{> comments review.comments}} --}}
 
 {{#if loggedIn}}
-<script src="/javascript/comment.js"></script>
+<script src="/javascript/review.js"></script>
 {{/if}}
