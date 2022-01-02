@@ -30,7 +30,12 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbReviewData => res.json(dbReviewData))
+    .then(dbReviewData => {
+      const reviews = dbReviewData.map(review => review.get({ plain: true }));
+      res.render('dashboard', { reviews, loggedIn: true });
+      console.log("review-routes.js -- inside .then");
+    })
+    //.then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
