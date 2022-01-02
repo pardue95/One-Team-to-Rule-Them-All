@@ -33,6 +33,14 @@ const reviewData = [
         created: 'October 31, 2021 06:06:06',
         updated: 'November 21, 2021 22:09:00'
     },
+    {
+        reviewId: '5',
+        bookId: '16',
+        userId: '4',
+        comment: 'Second Review for this Book',
+        created: 'October 31, 2021 06:06:06',
+        updated: 'November 21, 2021 22:09:00'
+    },
 ];
 
 const seedReview = () => Review.bulkCreate(reviewData);
