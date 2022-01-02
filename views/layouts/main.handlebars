@@ -12,15 +12,15 @@
 <body>
     <div class="wrapper">
         <header calss ="hero">
-            <h1>
-                <a href="/">Bestest Book Review Site Evers</a>
-            </h1>
-            {{#if loggedIn}}
-            <a id="logout" href="/" class="btn-no-style">logout</a>
-            {{else}}
-            <a href="/login">login</a>
-            {{/if}}
-
+                <h1>
+                    <a href="/">Bestest Book Review Site Evers</a>
+                </h1>
+                <a href="/dashboard">Make a Review</a>
+                {{#if loggedIn}}
+                <a id="logout" href="/" class="btn-no-style">logout</a>
+                {{else}}
+                <a href="/login">login</a>
+                {{/if}}
         </header>
         <main>
             {{{ body }}}
