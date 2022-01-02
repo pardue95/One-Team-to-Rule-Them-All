@@ -1,9 +1,9 @@
-<h1>Bestest testing</h1>
+<h1>{{book.title}}</h1>
 
 <ol class="review-list">
   {{#each reviews as |review|}}
   <li>
-    {{> book-info review }}
+    {{> book-review review }}
     {{!-- {{#each review as |review|}}
     {{/each}} --}}
   </li>

@@ -6,11 +6,13 @@ const withAuth = require('../utils/auth');
 // get all posts for dashboard
 router.get('/:id', (req, res) => {
   console.log(req.session);
+  console.log('This is ID:  ' + req.params.id);
   console.log('======================');
-  Review.findAll({
-    // where: {
-    //   id: req.params.id
-    // },
+
+Review.findAll({
+    where: {
+      bookId: req.params.id
+    },
     attributes: [
         'reviewId',
         'bookId',
@@ -22,11 +24,7 @@ router.get('/:id', (req, res) => {
     include: [
       {
         model: Book,
-        attributes: ['bookId', 'title', 'author', 'genre'],
-        // include: {
-        //   model: User,
-        //   attributes: ['username']
-        // }
+        attributes: ['bookId', 'title', 'author', 'genre']
       },
       {
         model: User,
@@ -44,6 +42,8 @@ router.get('/:id', (req, res) => {
       res.status(500).json(err);
     });
 });
+
+
 
 
 
