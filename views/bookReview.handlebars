@@ -1,13 +1,12 @@
-<h1>Bestest Book Review Site Evers</h1>
+<h1>{{book.title}}</h1>
 
 <ol class="review-list">
-  {{#each books as |book|}}
+  {{#each reviews as |review|}}
   <li>
-    {{> book-info book }}
+    {{> book-review review }}
     {{!-- {{#each review as |review|}}
     {{/each}} --}}
   </li>
   {{/each}}
 </ol>
-
 
