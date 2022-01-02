@@ -1,10 +1,10 @@
-const { Review, User} = require('../models');
+const { Review, User, Book} = require('../models');
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 
 // get all posts for homepage
 router.get('/', (req, res) => {
-  console.log('======================');
+  console.log('======================');  //For Testing
   Review.findAll({
     attributes: [
       'reviewId',
@@ -29,14 +29,16 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
+    
+    .then(dbReviewData => {
+      const reviews = dbReviewData.map(review => review.get({ plain: true }));
 
       res.render('homepage', {
-        posts,
+        reviews,
         loggedIn: req.session.loggedIn
       });
     })
+  
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -52,15 +54,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.post('/logout', withAuth, (req, res) => {
-//   if (req.session.loggedIn) {
-//       req.session.destroy(() => {
-//           res.status(204).end();
-//       });
-//   } else {
-//       res.status(404).end();
-//   }
-// });
 
 router.get('/post/:id', (req, res) => {
   const review = {
