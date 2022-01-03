@@ -1,23 +1,23 @@
 <section>
   <h2>Create a Review For {{title}}</h2>
 
-  <form class="new-review-form">
+  <form class="reviewSubmit">
     <div>
       <label for="review-title">What's Your Opinin, Man?</label>
-      <input type="text" id="Review-title" name="Review-title" />
+      <input type="text" id="review-title" name="review-title" />
     </div>
     <button type="submit" class="btn">Create</button>
   </form>
 </section>
 
-{{#if Reviews.length}}
+{{#if reviews.length}}
 <section>
   <h2>Your Reviews</h2>
   <ol>
-    {{#each Reviews as |Review|}}
+    {{#each reviews as |review|}}
     <li>
-      {{> Review-info Review}}
-      <a href="/dashboard/edit/{{Review.id}}" class="edit-link">Edit Review</a>
+      {{> book-info book}}
+      <a href="/dashboard/edit/{{review.id}}" class="edit-link">Edit Review</a>
     </li>
     {{/each}}
   </ol>

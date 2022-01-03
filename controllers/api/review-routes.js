@@ -86,7 +86,8 @@ router.post('/', withAuth, (req, res) => {
   Review.create({
 
     bookId: req.body.bookId,
-    userId: req.body.userId
+    userId: req.body.userId,
+    comment: req.body.comment
 
   })
     .then(dbReviewData => res.json(dbReviewData))
@@ -101,7 +102,7 @@ router.put('/:id', withAuth, (req, res) => {
       req.body,
     {
       where: {
-        reviewId: req.params.id
+        reviewId: req.params.reviewId
       }
     }
   )
