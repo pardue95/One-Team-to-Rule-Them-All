@@ -9,18 +9,18 @@ async function newFormHandler(event) {
   const response = await fetch(`/api/review`, {
     method: 'POST',
     body: JSON.stringify({
-      review
+      reviewId
     }),
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // }
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
 
-  // if (response.ok) {
-  //   document.location.replace('/dashboard');
-  // } else {
-  //   alert(response.statusText);
-  // }
+  if (response.ok) {
+    document.location.replace('/dashboard');
+  } else {
+    alert(response.statusText);
+  }
 }
 
 console.log("Hello add-Review.js");

@@ -9,7 +9,7 @@
       <span>({{format_url post.post_url}})</span>
     </div>
     <div>
-      {{format_date review.created_at}}
+      {{format_date review.created}}
       |
       <a href="/review/{{review.id}}">{{review.comments.length}} {{format_plural "comment" review.comments.length}}</a>
     </div>
