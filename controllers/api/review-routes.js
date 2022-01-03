@@ -3,7 +3,7 @@ const sequelize = require('../../config/connection');
 const { Review, User, Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
+// get all reviews
 router.get('/', (req, res) => {
   Review.findAll({
     attributes: [
@@ -21,7 +21,7 @@ router.get('/', (req, res) => {
       //   include: {
       //     model: User,
       //     attributes: ['username']
-      //   }Error: Unknown column 'book.id' in 'field list'
+      //   }
       // },
       {
         model: User,
@@ -86,7 +86,7 @@ router.post('/', withAuth, (req, res) => {
   Review.create({
 
     bookId: req.body.bookId,
-    userId: req.session.userId
+    userId: req.body.userId
 
   })
     .then(dbReviewData => res.json(dbReviewData))
