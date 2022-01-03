@@ -1,46 +1,34 @@
-const { Review, User} = require('../models');
+const { Review, User, Book} = require('../models');
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 
-// get all posts for homepage
-router.get('/', (req, res) => {
-  console.log('======================');
-  Review.findAll({
-    attributes: [
-      'reviewId',
-      'bookId',
-      'userId',
-      'comment',
-      'created',
-      'updated',
-    ],
-    include: [
-      // {
-      //   model: Review,
-      //   attributes: ['reviewId', 'bookId', 'userId', 'comment', 'created', 'updated'],
-      //   include: {
-      //     model: User,
-      //     attributes: ['username']
-      //   }
-      // },
-      {
-        model: User,
-        attributes: ['username']
-      }
-    ]
-  })
-    .then(dbPostData => {
-      const posts = dbPostData.map(post => post.get({ plain: true }));
 
-      res.render('homepage', {
-        posts,
-        loggedIn: req.session.loggedIn
-      });
-    })
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
+router.get('/', (req, res) => {
+  console.log('======================');  //For Testing
+  Book.findAll({
+    attributes: [
+      'bookId',
+      'title',
+      'author',
+      'genre',
+    ]
+    
+  })
+    
+  .then(dbBookData => {
+    const books = dbBookData.map(book => book.get({ plain: true }));
+
+    res.render('homepage', {
+      books,
+      loggedIn: req.session.loggedIn
     });
+  })
+  
+
+  .catch(err => {
+    console.log(err);
+    res.status(500).json(err);
+  });
 });
 
 router.get('/login', (req, res) => {
@@ -52,15 +40,6 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
-// router.post('/logout', withAuth, (req, res) => {
-//   if (req.session.loggedIn) {
-//       req.session.destroy(() => {
-//           res.status(204).end();
-//       });
-//   } else {
-//       res.status(404).end();
-//   }
-// });
 
 router.get('/post/:id', (req, res) => {
   const review = {

@@ -23,10 +23,10 @@ Review.init(
       userId: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: 'user',
-        //     key: 'id',
-        // }
+        references: {
+            model: 'user',
+            key: 'id',
+        }
       },
       comment: {
         type: DataTypes.STRING

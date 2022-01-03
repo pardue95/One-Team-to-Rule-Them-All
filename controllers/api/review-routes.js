@@ -3,9 +3,8 @@ const sequelize = require('../../config/connection');
 const { Review, User, Book } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
+// get all reviews
 router.get('/', (req, res) => {
-  console.log('======================');
   Review.findAll({
     attributes: [
       'reviewId',
@@ -22,7 +21,7 @@ router.get('/', (req, res) => {
       //   include: {
       //     model: User,
       //     attributes: ['username']
-      //   }Error: Unknown column 'book.id' in 'field list'
+      //   }
       // },
       {
         model: User,
@@ -30,7 +29,11 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbReviewData => res.json(dbReviewData))
+    .then(dbReviewData => {
+      const reviews = dbReviewData.map(review => review.get({ plain: true }));
+      res.render('dashboard', { reviews, loggedIn: true });
+    })
+    //.then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
@@ -82,8 +85,8 @@ router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Review.create({
 
-    // bookId: req.body.bookId,
-    userId: req.session.userId
+    bookId: req.body.bookId,
+    userId: req.body.userId
 
   })
     .then(dbReviewData => res.json(dbReviewData))
@@ -116,7 +119,6 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.id);
   Review.destroy({
     where: {
       reviewId: req.params.id

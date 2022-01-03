@@ -23,19 +23,19 @@ User.init(
     // reviewId: {
     //   type: DataTypes.INTEGER,
     //   allowNull: false,
-    //   references: {
-    //     model: 'review',
-    //     key: 'id'
-    //   }
+    //   // references: {
+    //   //   model: 'review',
+    //   //   key: 'id'
+    //   // }
     // },
-    bookId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    //   references: {
-    //       model: 'book',
-    //       key: 'id',
-    //   }
-    },
+    // bookId: {
+    //   type: DataTypes.INTEGER,
+    //   allowNull: false,
+    //   // references: {
+    //   //     model: 'book',
+    //   //     key: 'id',
+    //   // }
+    // },
     username: {
       type: DataTypes.STRING,
       allowNull: false

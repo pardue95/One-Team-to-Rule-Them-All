@@ -1,0 +1,28 @@
+<h1>Reviews For</h1>
+
+
+{{#each reviews as |review|}}
+  <p class = "review-list">
+      {{> book-review review }}
+  </p> <br>
+
+{{/each}}
+
+
+{{!-- <a href="/dashboard">Submit a Review For This Book</a> --}}
+
+
+<section>
+  <h2>Create a Review</h2>
+
+  <form class="new-review-form">
+    <div>
+      <label for="review-title">What's Your Opinin, Man?</label>
+      <input type="text" id="review" name="Review-title" />
+    </div>
+    <button type="submit" class="reviewSubmit">Create</button>
+  </form>
+</section>
+
+<script src="/public/javascript/add-review.js"></script>
+

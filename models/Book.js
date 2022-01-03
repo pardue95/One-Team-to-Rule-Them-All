@@ -10,10 +10,10 @@ Book.init (
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
-},
-    userId: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
+// },
+//     userId: {
+//         type: DataTypes.INTEGER,
+//         allowNull: false,
 //         references: {
 //             model: 'user',
 //             key: 'id',
@@ -22,11 +22,11 @@ Book.init (
 //         reviewId: {
 //             type: DataTypes.INTEGER,
 //             allowNull: false,
-//             references: {
-//               model: 'review',
-//               key: 'id'
-//             }
-// },
+            // references: {
+            //   model: 'review',
+            //   key: 'id'
+            // }
+},
     author: {
         type: DataTypes.STRING,
         allowNull: false,

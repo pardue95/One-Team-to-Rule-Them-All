@@ -17,7 +17,7 @@ Review.belongsTo( User, {
 });
 
 Review.belongsTo( Book, {
-  foreignKey: 'reviewId',
+  foreignKey: 'bookId',
 });
 
 // Book.belongsTo( User, {
