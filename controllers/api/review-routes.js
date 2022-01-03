@@ -5,7 +5,6 @@ const withAuth = require('../../utils/auth');
 
 // get all users
 router.get('/', (req, res) => {
-  console.log('======================');
   Review.findAll({
     attributes: [
       'reviewId',
@@ -33,7 +32,6 @@ router.get('/', (req, res) => {
     .then(dbReviewData => {
       const reviews = dbReviewData.map(review => review.get({ plain: true }));
       res.render('dashboard', { reviews, loggedIn: true });
-      console.log("review-routes.js -- inside .then");
     })
     //.then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
@@ -88,7 +86,7 @@ router.post('/', withAuth, (req, res) => {
   Review.create({
 
     bookId: req.body.bookId,
-    // userId: req.session.userId
+    userId: req.session.userId
 
   })
     .then(dbReviewData => res.json(dbReviewData))
@@ -121,7 +119,6 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.id);
   Review.destroy({
     where: {
       reviewId: req.params.id

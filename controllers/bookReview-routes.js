@@ -9,6 +9,7 @@ router.get('/:id', (req, res) => {
   console.log('This is ID:  ' + req.params.id);
   console.log('======================');
 
+
 Review.findAll({
     where: {
       bookId: req.params.id
