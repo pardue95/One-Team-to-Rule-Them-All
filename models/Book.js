@@ -26,7 +26,7 @@ Book.init (
             //   model: 'review',
             //   key: 'id'
             // }
-},
+// },
     author: {
         type: DataTypes.STRING,
         allowNull: false,
