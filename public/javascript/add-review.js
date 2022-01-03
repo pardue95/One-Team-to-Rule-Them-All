@@ -11,16 +11,16 @@ async function newFormHandler(event) {
     body: JSON.stringify({
       review
     }),
-    // headers: {
-    //   'Content-Type': 'application/json'
-    // }
+    headers: {
+      'Content-Type': 'application/json'
+    }
   });
 
-  // if (response.ok) {
-  //   document.location.replace('/dashboard');
-  // } else {
-  //   alert(response.statusText);
-  // }
+  if (response.ok) {
+    document.location.replace('/dashboard');
+  } else {
+    alert(response.statusText);
+  }
 }
 
 console.log("Hello add-Review.js");
