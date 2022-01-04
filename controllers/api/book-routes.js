@@ -5,7 +5,7 @@ const withAuth = require('../../utils/auth');
 
 // get all users
 router.get('/', (req, res) => {
-  console.log('======================');
+  // console.log('======================');
   Book.findAll({
     attributes: [
       'book_id',
@@ -110,7 +110,7 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.id);
+  // console.log('id', req.params.id);
   Book.destroy({
     where: {
       book_id: req.params.id

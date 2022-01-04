@@ -25,7 +25,7 @@ Review.init(
         allowNull: false,
         references: {
             model: 'user',
-            key: 'userId',
+            key: 'id',
         }
       },
       comment: {
