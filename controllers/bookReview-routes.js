@@ -52,7 +52,7 @@ router.post('/api/review', withAuth, (req, res) => {
   console.log("Inside Post Review"); //Testing
   Review.create({
 
-    bookId: req.body.bookId,
+    book_id: req.body.bookId,
     userId: req.body.userId,
     comment: req.body.comment
 
