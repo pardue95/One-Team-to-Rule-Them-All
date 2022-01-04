@@ -17,7 +17,7 @@ router.get('/',  (req, res) => {
 });
 // GET /api/users/1
 router.get('/:id', (req, res) => {
-    console.log(req.params.id)
+    // console.log(req.params.id)
   User.findOne({
     
     where: {
