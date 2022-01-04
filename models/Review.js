@@ -12,13 +12,13 @@ Review.init(
         primaryKey: true,
         autoIncrement: true
       },
-      bookId: {
+      book_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
-        // references: {
-        //     model: 'book',
-        //     key: 'id',
-        // }
+        references: {
+            model: 'book',
+            key: 'book_id',
+        }
       },
       userId: {
         type: DataTypes.INTEGER,

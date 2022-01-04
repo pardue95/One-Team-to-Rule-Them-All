@@ -4,19 +4,22 @@ const { Review, User, Book } = require('../models');
 const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
-router.get('/:id', (req, res) => {
-  console.log(req.session);
-  console.log('This is ID:  ' + req.params.id);
-  console.log('======================');
+router.get('/:id', withAuth, (req, res) => {
+  // console.log("bookReview-routes.js" + req.session.loggedIn); //Testing
+  // console.log('This is ID:  ' + req.params.id);
+  // console.log('======================');
 
+  var loggedIn = req.session.loggedIn;
+  var bookId = req.params.id;
+  
 
-Review.findAll({
+  Review.findAll({
     where: {
-      bookId: req.params.id
+      book_id: req.params.id
     },
     attributes: [
         'reviewId',
-        'bookId',
+        'book_id',
         'userId',
         'comment',
         'created',
@@ -25,7 +28,7 @@ Review.findAll({
     include: [
       {
         model: Book,
-        attributes: ['bookId', 'title', 'author', 'genre']
+        attributes: ['book_id', 'title', 'author', 'genre']
       },
       {
         model: User,
@@ -35,8 +38,8 @@ Review.findAll({
   })
     .then(dbReviewData => {
       const reviews = dbReviewData.map(review => review.get({ plain: true }));
-      console.log(reviews);
-      res.render('bookReview', { reviews });
+      //console.log(reviews); //Testing
+      res.render('bookReview', { reviews , loggedIn, bookId });
     })
     .catch(err => {
       console.log(err);
