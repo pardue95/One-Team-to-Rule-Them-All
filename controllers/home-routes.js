@@ -4,7 +4,7 @@ const sequelize = require('../config/connection');
 
 
 router.get('/', (req, res) => {
-  console.log('======================');  //For Testing
+  // console.log('======================');  //For Testing
   Book.findAll({
     attributes: [
       'book_id',
@@ -32,7 +32,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
-  console.log(req.session.loggedIn); //Testing
+  // console.log(req.session.loggedIn); //Testing
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
@@ -55,6 +55,9 @@ router.get('/post/:id', (req, res) => {
 
   res.render('single-review', { review });
 });
+
+
+
 
 
 

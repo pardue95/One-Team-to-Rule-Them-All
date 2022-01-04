@@ -38,7 +38,7 @@ router.get('/:id', withAuth, (req, res) => {
   })
     .then(dbReviewData => {
       const reviews = dbReviewData.map(review => review.get({ plain: true }));
-      console.log(reviews);
+      //console.log(reviews); //Testing
       res.render('bookReview', { reviews , loggedIn, bookId });
     })
     .catch(err => {

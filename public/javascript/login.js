@@ -1,5 +1,5 @@
 async function loginFormHandler(event) {
-  console.log("Logout.js -- INSIDE"); //Testing
+  // console.log("Logout.js -- INSIDE"); //Testing
   event.preventDefault();
 
   const email = document.querySelector('#email-login').value.trim();

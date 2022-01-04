@@ -1,14 +1,14 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Review, User, Book } = require('../../models');
+const { Review, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
-router.get('/', (req, res) => {
+//get all users
+router.get('/all', (req, res) => {
   Review.findAll({
     attributes: [
       'reviewId',
-      'bookId',
+      'book_id',
       'userId',
       'comment',
       'created',
@@ -29,10 +29,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbReviewData => {
-      const reviews = dbReviewData.map(review => review.get({ plain: true }));
-      res.render('dashboard', { reviews, loggedIn: true });
-    })
+    .then(dbReviewData => res.json(dbReviewData))
     //.then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
@@ -81,13 +78,15 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/review', withAuth, (req, res) => {
+router.post('/add', (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   console.log("Inside Post Review"); //Testing
   Review.create({
-
     book_id: req.body.book_id,
-    userId: req.session.userId
+    userId: req.session.userId,
+    comment: req.body.comment,
+    created: req.body.created,
+    updated: req.body.updated
 
   })
     .then(dbReviewData => res.json(dbReviewData))
