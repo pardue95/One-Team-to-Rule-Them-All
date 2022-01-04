@@ -31,17 +31,20 @@ Review.init(
       comment: {
         type: DataTypes.STRING
       },
-      // // created: {
-      // //   type: DataTypes.DATE,
-      // //   // allowNull: false
-      // // },
+      created: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
       // updated: {
       //   type: DataTypes.DATE,
       //   // allowNull: false
       //     }
+      
       },
     {
       sequelize,
+      timestamps: false,
       freezeTableName: true,
       underscored: true,
       modelName: 'review'
