@@ -14,7 +14,7 @@ function newFormHandler(event) {
     body: JSON.stringify({
       book_id: bookId,
       userId: document.querySelector('#reviewSubmit').value,
-      comment: review,
+      comment: review
       // created: ,
       // updated:
     }),

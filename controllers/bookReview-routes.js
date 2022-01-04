@@ -47,6 +47,23 @@ router.get('/:id', withAuth, (req, res) => {
     });
 });
 
+router.post('/api/review', withAuth, (req, res) => {
+  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  console.log("Inside Post Review"); //Testing
+  Review.create({
+
+    bookId: req.body.bookId,
+    userId: req.body.userId,
+    comment: req.body.comment
+
+  })
+    .then(dbReviewData => res.json(dbReviewData))
+    .catch(err => {
+      console.log(err);
+      res.status(500).json(err);
+    });
+});
+
 
 
 

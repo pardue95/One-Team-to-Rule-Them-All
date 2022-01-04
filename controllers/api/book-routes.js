@@ -8,7 +8,7 @@ router.get('/', (req, res) => {
   console.log('======================');
   Book.findAll({
     attributes: [
-      'bookId',
+      'book_id',
       'title',
       'author',
       'genre',
