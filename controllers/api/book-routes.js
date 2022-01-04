@@ -16,7 +16,9 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Review,
-        attributes: ['reviewId', 'book_id', 'user_id', 'comment', 'created', 'updated'],
+        attributes: ['reviewId', 'book_id', 'user_id', 'comment',
+        // 'created', 'updated'
+      ],
         include: {
           model: User,
           attributes: ['username']
@@ -49,7 +51,9 @@ router.get('/:id', (req, res) => {
     include: [
         {
             model: Review,
-            attributes: ['reviewId', 'book_id', 'user_id', 'comment', 'created', 'updated'],
+            attributes: ['reviewId', 'book_id', 'user_id', 'comment',
+            //  'created', 'updated'
+            ],
             include: {
                 model: User,
                 attributes: ['username']
@@ -78,7 +82,7 @@ router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Book.create({
     book_id: req.body.book_id,
-    userId: req.session.userId
+    user_id: req.session.user_id
   })
     .then(dbBookData => res.json(dbBookData))
     .catch(err => {

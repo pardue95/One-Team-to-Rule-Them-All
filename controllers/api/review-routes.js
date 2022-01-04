@@ -9,10 +9,10 @@ router.get('/all', (req, res) => {
     attributes: [
       'reviewId',
       'book_id',
-      'userId',
+      'user_id',
       'comment',
-      'created',
-      'updated',
+      // 'created',
+      // 'updated',
     ],
     include: [
       // {
@@ -45,10 +45,10 @@ router.get('/:id', (req, res) => {
     attributes: [
         'reviewId',
         'book_id',
-        'userId',
+        'user_id',
         'comment',
-        'created',
-        'updated'
+        // 'created',
+        // 'updated'
     ],
     include: [
       // {
@@ -81,12 +81,13 @@ router.get('/:id', (req, res) => {
 router.post('/add', (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   console.log("Inside Post Review"); //Testing
+  console.log(req.body)
   Review.create({
     book_id: req.body.book_id,
-    userId: req.session.userId,
+    user_id: req.session.user_id,
     comment: req.body.comment,
-    created: req.body.created,
-    updated: req.body.updated
+    // created: req.body.created,
+    // updated: req.body.updated
 
   })
     .then(dbReviewData => res.json(dbReviewData))
