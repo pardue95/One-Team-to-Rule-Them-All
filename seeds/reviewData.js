@@ -3,7 +3,7 @@ const { Review } = require('../models');
 const reviewData = [
     {
         reviewId: '1',
-        bookId: '49',
+        book_id: '49',
         userId: '8',
         comment: 'My Favorite Book!!',
         created: 'December 21, 2021 22:09:00',
@@ -11,7 +11,7 @@ const reviewData = [
     },
     {
         reviewId: '2',
-        bookId: '10',
+        book_id: '10',
         userId: '3',
         comment: 'I did not like this book at all',
         created: 'December 11, 2021 11:09:00',
@@ -19,7 +19,7 @@ const reviewData = [
     },
     {
         reviewId: '3',
-        bookId: '32',
+        book_id: '32',
         userId: '10',
         comment: 'Must Read',
         created: 'April 7, 2021 07:07:00',
@@ -27,7 +27,7 @@ const reviewData = [
     },
     {
         reviewId: '4',
-        bookId: '16',
+        book_id: '16',
         userId: '4',
         comment: 'I loved the Alians in this book',
         created: 'October 31, 2021 06:06:06',
@@ -35,7 +35,7 @@ const reviewData = [
     },
     {
         reviewId: '5',
-        bookId: '16',
+        book_id: '16',
         userId: '4',
         comment: 'Second Review for this Book',
         created: 'October 31, 2021 06:06:06',

@@ -17,15 +17,15 @@ Review.belongsTo( User, {
 });
 
 Review.belongsTo( Book, {
-  foreignKey: 'bookId',
+  foreignKey: 'book_id',
 });
 
 // Book.belongsTo( User, {
-//   foreignKey: 'bookId',
+//   foreignKey: 'book_id',
 // });
 
 Book.hasMany( Review, {
-  foreignKey: 'bookId',
+  foreignKey: 'book_id',
   onDelete: 'CASCADE'
 });
 

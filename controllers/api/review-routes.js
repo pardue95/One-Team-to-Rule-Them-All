@@ -47,7 +47,7 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
         'reviewId',
-        'bookId',
+        'book_id',
         'userId',
         'comment',
         'created',
@@ -81,11 +81,12 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/review', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  console.log("Inside Post Review"); //Testing
   Review.create({
 
-    bookId: req.body.bookId,
+    book_id: req.body.book_id,
     userId: req.session.userId
 
   })
