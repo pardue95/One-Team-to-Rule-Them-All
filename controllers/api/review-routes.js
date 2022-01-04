@@ -29,10 +29,7 @@ router.get('/all', (req, res) => {
       }
     ]
   })
-    .then(dbReviewData => {
-      const reviews = dbReviewData.map(review => review.get({ plain: true }));
-      res.render('homepage', { reviews, loggedIn: true });
-    })
+    .then(dbReviewData => res.json(dbReviewData))
     //.then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
