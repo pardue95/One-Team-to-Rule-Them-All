@@ -15,7 +15,7 @@
     },
     body: JSON.stringify({
       book_id: bookId,
-      userId: document.querySelector('#reviewSubmit').value,
+      user_id: document.querySelector('#reviewSubmit').value,
       comment: review,
       created: Date(),
       updated: Date()
