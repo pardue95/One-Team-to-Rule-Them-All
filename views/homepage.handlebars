@@ -3,9 +3,15 @@
 <ol class="review-list">
   {{#each books as |book|}}
   <li>
-    {{> book-info book }}
-    {{!-- {{#each review as |review|}}
-    {{/each}} --}}
+    {{!-- NOT NEEDED --}}
+    {{!-- {{> book-info book }} --}} 
+    
+    <article class="review">
+      <div class="title">
+        <a href="bookReview/{{bookId}}">{{title}} By: {{author}} </a>
+      </div>
+    </article>
+
   </li>
   {{/each}}
 </ol>
