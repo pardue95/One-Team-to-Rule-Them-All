@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
       'reviewId',
       'bookId',
       'userId',
-      'comment',
+      'reviews',
       'created',
       'updated',
     ],
@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
         'reviewId',
         'bookId',
         'userId',
-        'comment',
+        'reviews',
         'created',
         'updated'
     ],
