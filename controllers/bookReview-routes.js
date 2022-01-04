@@ -20,10 +20,10 @@ router.get('/:id', withAuth, (req, res) => {
     attributes: [
         'reviewId',
         'book_id',
-        'userId',
+        'user_id',
         'comment',
-        'created',
-        'updated',
+        // 'created',
+        // 'updated',
     ],
     include: [
       {
