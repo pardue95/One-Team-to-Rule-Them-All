@@ -1,20 +1,27 @@
-async function newFormHandler(event) {
+
+function newFormHandler(event) {
   event.preventDefault();
 
   const review = document.querySelector('input[name="review-title"]').value;
   //const review_url = document.querySelector('input[name="review-url"]').value;
 
-  console.log("Testing Log  " + review);
+  var pathName= window.location.pathname;
+  var bookId = pathName.slice(12);
+ 
 
-  const response = await fetch(`/api/review`, {
+  const response = fetch('/api/review', {
     method: 'POST',
     body: JSON.stringify({
-      review
+      book_id: bookId,
+      userId: document.querySelector('#reviewSubmit').value,
+      comment: review,
+      // created: ,
+      // updated:
     }),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
+    // headers: {
+    //   'Content-Type': 'application/json'
+    // }
+   });
 
   if (response.ok) {
     document.location.replace('/dashboard');
@@ -25,7 +32,6 @@ async function newFormHandler(event) {
 }
 
 
-
-document.querySelector('.reviewSubmit').addEventListener('submit', newFormHandler);
-document.querySelector('.new-review-form').addEventListener('submit', newFormHandler);
+document.querySelector('#reviewSubmit').addEventListener('click', newFormHandler);
+// document.querySelector('.new-review-form').addEventListener('submit', newFormHandler);
 

@@ -16,7 +16,7 @@ router.get('/', (req, res) => {
     include: [
       {
         model: Review,
-        attributes: ['reviewId', 'bookId', 'user_id', 'comment', 'created', 'updated'],
+        attributes: ['reviewId', 'book_id', 'user_id', 'comment', 'created', 'updated'],
         include: {
           model: User,
           attributes: ['username']
@@ -38,10 +38,10 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
   Book.findOne({
     where: {
-      bookId: req.params.id
+      book_id: req.params.id
     },
     attributes: [
-        'bookId',
+        'book_id',
         'title',
         'author',
         'genre',
@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
     include: [
         {
             model: Review,
-            attributes: ['reviewId', 'bookId', 'user_id', 'comment', 'created', 'updated'],
+            attributes: ['reviewId', 'book_id', 'user_id', 'comment', 'created', 'updated'],
             include: {
                 model: User,
                 attributes: ['username']
@@ -77,7 +77,7 @@ router.get('/:id', (req, res) => {
 router.post('/', withAuth, (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   Book.create({
-    bookId: req.body.bookId,
+    book_id: req.body.book_id,
     userId: req.session.userId
   })
     .then(dbBookData => res.json(dbBookData))
@@ -92,7 +92,7 @@ router.put('/:id', withAuth, (req, res) => {
       req.body,
     {
       where: {
-        bookId: req.params.id
+        book_id: req.params.id
       }
     }
   )
@@ -113,7 +113,7 @@ router.delete('/:id', withAuth, (req, res) => {
   console.log('id', req.params.id);
   Book.destroy({
     where: {
-      bookId: req.params.id
+      book_id: req.params.id
     }
   })
     .then(dbBookData => {
