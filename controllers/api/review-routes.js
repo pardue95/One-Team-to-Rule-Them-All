@@ -5,16 +5,14 @@ const withAuth = require('../../utils/auth');
 
 //get all users
 router.get('/all', (req, res) => {
-   console.log(req.body);
   Review.findAll({
-   
     attributes: [
       'reviewId',
       'book_id',
-      'user_id',
+      'userId',
       'comment',
-      'created_at',
-      // 'updated',
+      'created',
+      'updated',
     ],
     include: [
       // {
@@ -47,10 +45,10 @@ router.get('/:id', (req, res) => {
     attributes: [
         'reviewId',
         'book_id',
-        'user_id',
+        'userId',
         'comment',
-        // 'created',
-        // 'updated'
+        'created',
+        'updated'
     ],
     include: [
       // {
@@ -83,13 +81,12 @@ router.get('/:id', (req, res) => {
 router.post('/add', (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
   console.log("Inside Post Review"); //Testing
-  console.log(req.body)
   Review.create({
     book_id: req.body.book_id,
-    user_id: req.session.user_id,
+    userId: req.session.userId,
     comment: req.body.comment,
-    // created: req.body.created,
-    // updated: req.body.updated
+    created: req.body.created,
+    updated: req.body.updated
 
   })
     .then(dbReviewData => res.json(dbReviewData))
