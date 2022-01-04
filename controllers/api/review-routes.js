@@ -86,14 +86,9 @@ router.post('/review', withAuth, (req, res) => {
   console.log("Inside Post Review"); //Testing
   Review.create({
 
-<<<<<<< HEAD
     bookId: req.body.bookId,
     userId: req.body.userId,
     comment: req.body.comment
-=======
-    book_id: req.body.book_id,
-    userId: req.session.userId
->>>>>>> develop
 
   })
     .then(dbReviewData => res.json(dbReviewData))
