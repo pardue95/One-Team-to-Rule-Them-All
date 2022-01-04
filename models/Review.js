@@ -31,14 +31,14 @@ Review.init(
       comment: {
         type: DataTypes.STRING
       },
-      // created: {
-      //   type: DataTypes.DATE,
-      //   allowNull: false
-      // },
-      // updated: {
-      //   type: DataTypes.DATE,
-      //   allowNull: false
-      //     }
+      created: {
+        type: DataTypes.DATE,
+        allowNull: false
+      },
+      updated: {
+        type: DataTypes.DATE,
+        allowNull: false
+          }
       },
     {
       sequelize,
