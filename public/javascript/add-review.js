@@ -23,12 +23,12 @@ function newFormHandler(event) {
     // }
    });
 
-  if (response.ok) {
-    document.location.replace('/dashboard');
-  } else {
-    alert(response.statusText);
-  }
-  console.log("Hello add-Review.js");
+  // if (response.ok) {
+  //   document.location.replace('/dashboard');
+  // } else {
+  //   alert(response.statusText);
+  // }
+  // console.log("Hello add-Review.js");
 }
 
 
