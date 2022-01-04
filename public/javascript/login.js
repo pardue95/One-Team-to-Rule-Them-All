@@ -1,4 +1,5 @@
 async function loginFormHandler(event) {
+  console.log("Logout.js -- INSIDE"); //Testing
   event.preventDefault();
 
   const email = document.querySelector('#email-login').value.trim();
@@ -15,7 +16,7 @@ async function loginFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }
@@ -41,7 +42,7 @@ async function signupFormHandler(event) {
     });
 
     if (response.ok) {
-      document.location.replace('/dashboard');
+      document.location.replace('/');
     } else {
       alert(response.statusText);
     }

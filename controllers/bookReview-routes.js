@@ -1,16 +1,17 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Review, User, Book } = require('../models');
-const withAuth = require('../utils/auth');
+// const withAuth = require('../utils/auth');
 
 // get all posts for dashboard
-router.get('/:id', (req, res) => {
-  console.log(req.session);
-  console.log('This is ID:  ' + req.params.id);
-  console.log('======================');
+router.get('/:id', withAuth, (req, res) => {
+  // console.log("bookReview-routes.js" + req.session.loggedIn); //Testing
+  // console.log('This is ID:  ' + req.params.id);
+  // console.log('======================');
 
+  var loggedIn = req.session.loggedIn;
 
-Review.findAll({
+  Review.findAll({
     where: {
       bookId: req.params.id
     },
@@ -36,7 +37,7 @@ Review.findAll({
     .then(dbReviewData => {
       const reviews = dbReviewData.map(review => review.get({ plain: true }));
       console.log(reviews);
-      res.render('bookReview', { reviews });
+      res.render('bookReview', { reviews , loggedIn });
     })
     .catch(err => {
       console.log(err);

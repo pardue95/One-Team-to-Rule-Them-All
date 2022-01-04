@@ -3,9 +3,9 @@ const Review = require('./Review');
 const Book = require('./Book');
 
 
-User.hasMany( Book, {
-  foreignKey: 'user_id',
-});
+// User.hasMany( Book, {
+//   foreignKey: 'user_id',
+// });
 
 User.hasMany( Review, {
   foreignKey: 'user_id',

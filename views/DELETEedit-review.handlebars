@@ -1,3 +1,4 @@
+
 <article>
   <a href="/dashboard"> &larr; Back to dashboard</a>
   <h2>
@@ -11,7 +12,7 @@
     <div>
       {{format_date review.created}}
       |
-      <a href="/review/{{review.id}}">{{review.comments.length}} {{format_plural "comment" review.comments.length}}</a>
+      <a href="/review/{{review.id}}">{{review.comment.length}} {{format_plural "comment" review.comments.length}}</a>
     </div>
     <button type="submit">Save post</button>
     <button type="button" class="delete-review-btn">Delete Review</button>
@@ -28,8 +29,9 @@
   </div>
 </form>
 
-{{> comments review.comments}}
+{{> comments review.comment}}
 
-<script src="/javascript/edit-review.js"></script>
+
+{{!-- <script src="/javascript/edit-review.js"></script>
 <script src="/javascript/delete-review.js"></script>
-<script src="/javascript/comment.js"></script>
+<script src="/javascript/comment.js"></script> --}}
