@@ -12,17 +12,11 @@ function newFormHandler(event) {
   const response = fetch('/api/review', {
     method: 'POST',
     body: JSON.stringify({
-<<<<<<< HEAD
-      reviewId,
-      comment
-      
-=======
       book_id: bookId,
       userId: document.querySelector('#reviewSubmit').value,
       comment: review,
       // created: ,
       // updated:
->>>>>>> develop
     }),
     // headers: {
     //   'Content-Type': 'application/json'
