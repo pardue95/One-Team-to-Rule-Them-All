@@ -10,14 +10,16 @@ router.get('/:id', withAuth, (req, res) => {
   // console.log('======================');
 
   var loggedIn = req.session.loggedIn;
+  var bookId = req.params.id;
+  
 
   Review.findAll({
     where: {
-      bookId: req.params.id
+      book_id: req.params.id
     },
     attributes: [
         'reviewId',
-        'bookId',
+        'book_id',
         'userId',
         'comment',
         'created',
@@ -26,7 +28,7 @@ router.get('/:id', withAuth, (req, res) => {
     include: [
       {
         model: Book,
-        attributes: ['bookId', 'title', 'author', 'genre']
+        attributes: ['book_id', 'title', 'author', 'genre']
       },
       {
         model: User,
@@ -37,7 +39,7 @@ router.get('/:id', withAuth, (req, res) => {
     .then(dbReviewData => {
       const reviews = dbReviewData.map(review => review.get({ plain: true }));
       console.log(reviews);
-      res.render('bookReview', { reviews , loggedIn });
+      res.render('bookReview', { reviews , loggedIn, bookId });
     })
     .catch(err => {
       console.log(err);
