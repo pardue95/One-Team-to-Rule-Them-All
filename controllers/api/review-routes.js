@@ -5,13 +5,15 @@ const withAuth = require('../../utils/auth');
 
 //get all users
 router.get('/all', (req, res) => {
+   console.log(req.body);
   Review.findAll({
+   
     attributes: [
       'reviewId',
       'book_id',
       'user_id',
       'comment',
-      // 'created',
+      'created_at',
       // 'updated',
     ],
     include: [
