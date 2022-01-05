@@ -22,7 +22,7 @@ router.get('/:id', withAuth, (req, res) => {
         'book_id',
         'user_id',
         'comment',
-        // 'created',
+        'created',
         // 'updated',
     ],
     include: [
@@ -46,26 +46,5 @@ router.get('/:id', withAuth, (req, res) => {
       res.status(500).json(err);
     });
 });
-
-router.post('/api/review', withAuth, (req, res) => {
-  // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
-  console.log("Inside Post Review"); //Testing
-  Review.create({
-
-    book_id: req.body.bookId,
-    userId: req.body.userId,
-    comment: req.body.comment
-
-  })
-    .then(dbReviewData => res.json(dbReviewData))
-    .catch(err => {
-      console.log(err);
-      res.status(500).json(err);
-    });
-});
-
-
-
-
 
 module.exports = router;

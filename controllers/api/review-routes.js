@@ -13,7 +13,7 @@ router.get('/all', (req, res) => {
       'book_id',
       'user_id',
       'comment',
-      'created_at',
+      'created',
       // 'updated',
     ],
     include: [
@@ -49,7 +49,7 @@ router.get('/:id', (req, res) => {
         'book_id',
         'user_id',
         'comment',
-        // 'created',
+        'created',
         // 'updated'
     ],
     include: [
