@@ -76,5 +76,5 @@ User.init(
     modelName: 'user'
   }
 );
-// renamed file to User.js
+// renamed file to User.jsa
 module.exports = User;
