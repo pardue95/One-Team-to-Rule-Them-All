@@ -6,11 +6,11 @@
   "scripts": {
     "test": "\"jest\"",
     "seeds": "node seeds/index.js",
-    "start": "npm server.js"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pardue95/One-team-to-rule-them-all"
+    "url": "git+https://github.com/pardue95/One-team-to-rule-them-all.git"
   },
   "author": "",
   "license": "ISC",
