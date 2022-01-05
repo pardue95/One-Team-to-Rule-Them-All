@@ -4,10 +4,10 @@ const sequelize = require('../config/connection');
 
 
 router.get('/', (req, res) => {
-  console.log('======================');  //For Testing
+  // console.log('======================');  //For Testing
   Book.findAll({
     attributes: [
-      'bookId',
+      'book_id',
       'title',
       'author',
       'genre',
@@ -32,6 +32,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/login', (req, res) => {
+  // console.log(req.session.loggedIn); //Testing
   if (req.session.loggedIn) {
     res.redirect('/');
     return;
@@ -41,19 +42,22 @@ router.get('/login', (req, res) => {
 });
 
 
-router.get('/post/:id', (req, res) => {
-  const review = {
-    reviewId: 1,
-    title: 'Handlebars Docs',
-    author: 'Testing',
-    genre: 'Test',    
-    user: {
-      username: 'test_user'
-    }
-  };
+// router.get('/post/:id', (req, res) => {
+//   const review = {
+//     reviewId: 1,
+//     title: 'Handlebars Docs',
+//     author: 'Testing',
+//     genre: 'Test',    
+//     user: {
+//       username: 'test_user'
+//     }
+//   };
 
-  res.render('single-review', { review });
-});
+//   res.render('single-review', { review });
+// });
+
+
+
 
 
 

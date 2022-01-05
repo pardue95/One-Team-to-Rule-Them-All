@@ -1,19 +1,20 @@
 const router = require('express').Router();
 const sequelize = require('../../config/connection');
-const { Review, User, Book } = require('../../models');
+const { Review, User } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-// get all users
-router.get('/', (req, res) => {
-  console.log('======================');
+//get all users
+router.get('/all', (req, res) => {
+   console.log(req.body);
   Review.findAll({
+   
     attributes: [
       'reviewId',
-      'bookId',
-      'userId',
+      'book_id',
+      'user_id',
       'comment',
       'created',
-      'updated',
+      // 'updated',
     ],
     include: [
       // {
@@ -30,11 +31,7 @@ router.get('/', (req, res) => {
       }
     ]
   })
-    .then(dbReviewData => {
-      const reviews = dbReviewData.map(review => review.get({ plain: true }));
-      res.render('dashboard', { reviews, loggedIn: true });
-      console.log("review-routes.js -- inside .then");
-    })
+    .then(dbReviewData => res.json(dbReviewData))
     //.then(dbReviewData => res.json(dbReviewData))
     .catch(err => {
       console.log(err);
@@ -49,11 +46,11 @@ router.get('/:id', (req, res) => {
     },
     attributes: [
         'reviewId',
-        'bookId',
-        'userId',
+        'book_id',
+        'user_id',
         'comment',
         'created',
-        'updated'
+        // 'updated'
     ],
     include: [
       // {
@@ -83,12 +80,16 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.post('/', withAuth, (req, res) => {
+router.post('/add', (req, res) => {
   // expects {title: 'Taskmaster goes public!', post_url: 'https://taskmaster.com/press', user_id: 1}
+  console.log("Inside Post Review"); //Testing
+  console.log(req.body)
   Review.create({
-
-    bookId: req.body.bookId,
-    // userId: req.session.userId
+    book_id: req.body.book_id,
+    user_id: req.session.user_id,
+    comment: req.body.comment,
+    // created: req.body.created,
+    // updated: req.body.updated
 
   })
     .then(dbReviewData => res.json(dbReviewData))
@@ -121,7 +122,6 @@ router.put('/:id', withAuth, (req, res) => {
 });
 
 router.delete('/:id', withAuth, (req, res) => {
-  console.log('id', req.params.id);
   Review.destroy({
     where: {
       reviewId: req.params.id

@@ -12,36 +12,39 @@ Review.init(
         primaryKey: true,
         autoIncrement: true
       },
-      bookId: {
+      book_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        // references: {
-        //     model: 'book',
-        //     key: 'id',
-        // }
+        // allowNull: false,
+        references: {
+            model: 'book',
+            key: 'book_id',
+        }
       },
-      userId: {
+      user_id: {
         type: DataTypes.INTEGER,
-        allowNull: false,
-        // references: {
-        //     model: 'user',
-        //     key: 'id',
-        // }
+        // allowNull: false,
+        references: {
+            model: 'user',
+            key: 'id',
+        }
       },
       comment: {
         type: DataTypes.STRING
       },
       created: {
-        type: DataTypes.DATE,
-        allowNull: false
-      },
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
       updated: {
         type: DataTypes.DATE,
-        allowNull: false
+        // allowNull: false
           }
+      
       },
     {
       sequelize,
+      timestamps: false,
       freezeTableName: true,
       underscored: true,
       modelName: 'review'

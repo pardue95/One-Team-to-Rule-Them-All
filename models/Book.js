@@ -5,13 +5,13 @@ class Book extends Model {}
 
 Book.init (
     {
-    bookId: {
+    book_id: {
         type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true,
 },
-//     userId: {
+//     user_id: {
 //         type: DataTypes.INTEGER,
 //         allowNull: false,
 //         references: {

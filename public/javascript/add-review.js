@@ -1,25 +1,36 @@
-async function newFormHandler(event) {
+
+ function newFormHandler(event) {
   event.preventDefault();
 
-  const title = document.querySelector('input[name="review-title"]').value;
-  //const review_url = document.querySelector('input[name="review-url"]').value;
+  //console.log(document.querySelector('#reviewSubmit').value);
 
-  const response = await fetch(`/api/review`, {
+  const review = document.querySelector('input[name="review-title"]').value;
+  var pathName= window.location.pathname;
+  var bookId = pathName.slice(12);
+ 
+  const response =  fetch(`/api/review/add`, {
     method: 'POST',
-    body: JSON.stringify({
-      title,
-      //review_url
-    }),
     headers: {
       'Content-Type': 'application/json'
-    }
-  });
+    },
+    body: JSON.stringify({
+      book_id: bookId,
+      user_id: document.querySelector('#reviewSubmit').value,
+      comment: review,
+      created: Date(),
+      updated: Date()
+    })    
+   });
+   
 
   if (response.ok) {
-    document.location.replace('/dashboard');
+    document.location.replace("/");
   } else {
     alert(response.statusText);
   }
 }
 
-document.querySelector('.new-review-form').addEventListener('submit', newFormHandler);
+
+document.querySelector('#reviewSubmit').addEventListener('click', newFormHandler);
+
+
