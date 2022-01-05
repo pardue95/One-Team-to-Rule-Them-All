@@ -76,4 +76,5 @@ User.init(
     modelName: 'user'
   }
 );
+// renamed file to User.js
 module.exports = User;
