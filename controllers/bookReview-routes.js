@@ -22,7 +22,7 @@ router.get('/:id', withAuth, (req, res) => {
         'book_id',
         'user_id',
         'comment',
-        // 'created',
+        'created',
         // 'updated',
     ],
     include: [
