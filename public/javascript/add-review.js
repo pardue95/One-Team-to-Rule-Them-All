@@ -31,6 +31,6 @@
 }
 
 
-document.querySelector('#reviewSubmit').addEventListener('click', newFormHandler);
+document.querySelector('.reviewClick').addEventListener('click', newFormHandler);
 
 
