@@ -42,7 +42,7 @@ router.get('/login', (req, res) => {
 });
 
 
-router.get('/post/:id', (req, res) => {
+router.get('/review/:id', (req, res) => {
   const review = {
     reviewId: 1,
     title: 'Handlebars Docs',
@@ -53,7 +53,7 @@ router.get('/post/:id', (req, res) => {
     }
   };
 
-  res.render('single-review', { review });
+  res.render('review', { review });
 });
 
 

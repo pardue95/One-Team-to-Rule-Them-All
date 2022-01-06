@@ -9,13 +9,13 @@ async function reviewFormHandler(event) {
     if (review_text) {
       const response = await fetch('/api/review', {
         method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
         body: JSON.stringify({
           review_id,
           review_text
         }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
       });
   
       if (response.ok) {
@@ -24,6 +24,6 @@ async function reviewFormHandler(event) {
         alert(response.statusText);
       }
     }
-  }
+}
   
   document.querySelector('.review-form').addEventListener('submit', reviewFormHandler);

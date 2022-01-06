@@ -1,5 +1,5 @@
 
- function newFormHandler(event) {
+function newFormHandler(event) {
   event.preventDefault();
 
   //console.log(document.querySelector('#reviewSubmit').value);
