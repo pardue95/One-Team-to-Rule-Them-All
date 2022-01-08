@@ -6,32 +6,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestest Book Review Site Evers</title>
- <!--Import Google Icon Font-->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <!--Import materialize.css-->
-       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+     <link rel="stylesheet" href="/stylesheets/style.css"> 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma-rtl.min.css">
 </head>
 
-<body>
-    <div class="container wrapper">
-        <header class ="container hero">
-                <h1 class="brown lighten-2-text">
-                    <a href="/">Bestest Book Review Site Evers</a>
+<body class= "hero is-large is-link is-bold">
+    
+    <div class="">
+        <header class = "hero is-large is-link">
+                <h1>
+                    <a  class = "title is-1 has-text-danger" href="/">Bestest Book Review Site Evers</a>
                 </h1>
                 {{#if loggedIn}}
-                <div class="row">
-                        <div class="col s6 offset-s6"
-                <a id="logout" href="/" class="btn-no-style">logout</a>
+                <a id="logout" href="/" class="btn-no-style has-text-right">logout</a>
                 {{else}}
-                <a href="/login">login</a>
-                    </div>
-                </div>
+                <a class= "has-text-right" href="/login">login</a>
                 {{/if}}
-        </header>
-        <main>
+        </header >
+        <main class= "hero is-large is-link is-bold">
             {{{ body }}}
         </main>
-        <footer>
+        <footer class= "hero is-large is-link is-bold">
             "That's just like your opinion man." The Dude
         </footer>
     </div>
