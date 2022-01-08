@@ -1,5 +1,5 @@
 
- function newFormHandler(event) {
+ async function newFormHandler(event) {
   event.preventDefault();
 
   //console.log(document.querySelector('#reviewSubmit').value);
@@ -8,7 +8,7 @@
   var pathName= window.location.pathname;
   var bookId = pathName.slice(12);
  
-  const response =  fetch(`/api/review/add`, {
+  const response = await fetch(`/api/review/add`, {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json'
@@ -24,13 +24,13 @@
    
 
   if (response.ok) {
-    document.location.replace("/");
+    document.location.reload();
   } else {
     alert(response.statusText);
   }
 }
 
 
-document.querySelector('#reviewSubmit').addEventListener('click', newFormHandler);
+document.querySelector('.reviewClick').addEventListener('click', newFormHandler);
 
 
