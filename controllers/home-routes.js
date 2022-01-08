@@ -41,6 +41,7 @@ router.get('/login', (req, res) => {
   res.render('login');
 });
 
+<<<<<<< HEAD
 
 router.get('/review/:id', (req, res) => {
   const review = {
@@ -54,7 +55,27 @@ router.get('/review/:id', (req, res) => {
   };
 
   res.render('review', { review });
+=======
+// rendering sign up page 
+router.get('/signup', (req, res) => {
+    res.render('signup');
+>>>>>>> 2fd5c109f6b34f4772d111d6057a558da2f7a044
 });
+
+
+// router.get('/post/:id', (req, res) => {
+//   const review = {
+//     reviewId: 1,
+//     title: 'Handlebars Docs',
+//     author: 'Testing',
+//     genre: 'Test',    
+//     user: {
+//       username: 'test_user'
+//     }
+//   };
+
+//   res.render('single-review', { review });
+// });
 
 
 

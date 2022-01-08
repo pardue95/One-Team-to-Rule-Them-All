@@ -1,8 +1,9 @@
-<h1>Reviews For</h1>
+
 
 
 {{#each reviews as |review|}}
-  <p class="review-list">
+  <p class = "review-list">
+  
       {{> book-review review }}
   </p> <br>
 
@@ -17,10 +18,10 @@
 
   <form class="new-review-form">
     <div>
-      <label for="review-title">What's Your Opinin, Man?</label>
+      <label for="review-title">What's Your Opinion, Man?</label>
       <input type="text" id="review" name="review-title" />
     </div>
-    <button type="submit" class="reviewSubmit" id="reviewSubmit" value={{user_id}}>Create</button>
+    <button type="submit" class="reviewClick" id="reviewSubmit" value={{user_id}}>Create</button>
   </form>
 </section>
 
