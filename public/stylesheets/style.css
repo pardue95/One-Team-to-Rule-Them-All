@@ -8,6 +8,7 @@ body, html {
   margin: 0;
   font-family: sans-serif;
   color: #333;
+  background: linear-gradient(35deg, #f3cfea, #7c7cd6 )
 }
 
 a {
@@ -109,13 +110,13 @@ main {
   color: #3486eb;
 }
 
-/* .delete-review-btn {
+.delete-review-btn {
   background-color: #d41414;
 }
 
 .delete-review-btn:hover {
   background-color: #ff643d;
-} */
+}
 
 .post {
   margin-bottom: 2%;
