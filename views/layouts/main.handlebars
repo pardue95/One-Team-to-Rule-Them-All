@@ -6,15 +6,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bestest Book Review Site Evers</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
 </head>
 
-<body>
+<body class="has-background-success">
     <div class="wrapper">
-        <header calss ="hero">
-                <h1>
+        <header class ="hero">
+                <h1 class="is-size-1" style="text-align: center;">
                     <a href="/">Bestest Book Review Site Evers</a>
                 </h1>
+                <section class="is-size-3" style="text-align: center;">Based on New York Times Top 50 Books</section>
                 {{#if loggedIn}}
                 <a id="logout" href="/" class="btn-no-style">logout</a>
                 {{else}}
@@ -24,7 +25,7 @@
         <main>
             {{{ body }}}
         </main>
-        <footer>
+        <footer class="has-background-success">
             "That's just like your opinion man." The Dude
         </footer>
     </div>
