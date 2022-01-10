@@ -47,8 +47,8 @@ Open
 
 ## Screenshots
 
-![Screenshot1](https://user-images.githubusercontent.com/90200981/148155591-60a567f5-5244-409e-954e-96a997e882c7.JPG)
-![Screenshot2](https://user-images.githubusercontent.com/90200981/148155638-263667da-c0b1-44ce-8b0c-c02902803dcf.JPG)
+![Screenshot1](https://user-images.githubusercontent.com/85760640/148835821-2721f82f-6df1-4b6d-9208-232bc29dab92.png)
+![Screenshot2](https://user-images.githubusercontent.com/85760640/148836250-157a60d9-761a-467d-a1ff-447323779fe5.png)
 
 
 ## Authors
