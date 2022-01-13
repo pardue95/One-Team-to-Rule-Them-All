@@ -43,7 +43,7 @@ Open
 
 ## Deployed Link
 
-* [Link Coming In Future]()
+* https://bbrse.herokuapp.com/
 
 ## Screenshots
 
